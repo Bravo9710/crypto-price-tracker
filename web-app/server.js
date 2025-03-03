@@ -1,6 +1,9 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3001;
@@ -9,16 +12,17 @@ app.use(cors());
 
 app.get("/api/crypto-prices", async (req, res) => {
   try {
-    const apiKey = "d11c77a5-a3e1-437a-8b31-eb92468068eb";
     const { data } = await axios.get(
       "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
       {
         headers: {
-          "X-CMC_PRO_API_KEY": apiKey,
+          // Replace with your own API key
+          // The API key shoud be stored in a secure way, such as in a .env file
+          "X-CMC_PRO_API_KEY": `${process.env.API_KEY}`,
         },
-        // params: {
-        //   limit: 5,
-        // },
+        params: {
+          limit: 5,
+        },
       },
     );
     res.json(data);
