@@ -16,13 +16,14 @@ app.get("/api/crypto-prices", async (req, res) => {
         headers: {
           "X-CMC_PRO_API_KEY": apiKey,
         },
-        params: {
-          limit: 5,
-        },
+        // params: {
+        //   limit: 5,
+        // },
       },
     );
     res.json(data);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to fetch data" });
   }
 });
