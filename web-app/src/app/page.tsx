@@ -44,26 +44,24 @@ export default function Home() {
             <Loader />
           </div>
         ) : (
-          <table className="w-full border">
-            <thead>
-              <tr>
-                <th className="border p-2">Name</th>
-                <th className="border p-2">Symbol</th>
-                <th className="border p-2">Price (USD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((coin) => (
-                <tr key={coin.id}>
-                  <td className="border p-2">{coin.name}</td>
-                  <td className="border p-2">{coin.symbol}</td>
-                  <td className="border p-2">
-                    ${coin.quote.USD.price.toFixed(2)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <ul className="w-full border">
+            <li className="flex items-center justify-between border p-2">
+              <h3 className="w-2/5 md:w-3/5">Name</h3>
+              <h3 className="w-3/10 md:w-1/5">Symbol</h3>
+              <h3 className="w-3/10 md:w-1/5">Price (USD)</h3>
+            </li>
+            {filteredData.map((coin) => (
+              <li
+                key={coin.id}
+                className="flex items-center justify-between border p-2">
+                <span className="w-2/5 md:w-3/5">{coin.name}</span>
+                <span className="w-3/10 md:w-1/5">{coin.symbol}</span>
+                <span className="w-3/10 md:w-1/5">
+                  ${coin.quote.USD.price.toFixed(2)}
+                </span>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </main>
