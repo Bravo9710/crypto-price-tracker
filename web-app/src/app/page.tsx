@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { fetchCryptoPrices } from "./lib/fetchCrypto";
+import { fetchCryptoPrices } from "./utils/fetchCrypto";
 import Loader from "./components/Loader";
 import Button from "./components/Button";
 import SearchBar from "./components/SearchBar";
